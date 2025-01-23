@@ -1,0 +1,67 @@
+#Task 4: Log Analysis System
+from collections import Counter
+
+def log_analysis(filename):
+    ip_counter = Counter()
+    response_code_counter = Counter()
+    url_counter = Counter()
+
+    try:
+        with open(filename, 'r') as file:
+            for line in file:
+                parts = line.split()
+
+                # Extracting IP, response code, and URL from each log entry (example format)
+                if len(parts) >= 9:  # assuming log has at least 9 columns
+                    ip = parts[0]
+                    response_code = parts[8]
+                    url = parts[6]
+
+                    # Update counters
+                    ip_counter[ip] += 1
+                    response_code_counter[response_code] += 1
+                    url_counter[url] += 1
+
+        # Print the most common IP addresses, response codes, and URLs
+        print("Most Frequent IP Addresses:")
+        for ip, count in ip_counter.most_common(5):
+            print(f"{ip}: {count} times")
+
+        print("\nMost Frequent Response Codes:")
+        for code, count in response_code_counter.most_common(5):
+            print(f"{code}: {count} times")
+
+        print("\nMost Accessed URLs:")
+        for url, count in url_counter.most_common(5):
+            print(f"{url}: {count} times")
+
+    except FileNotFoundError:
+        print("The log file was not found.")
+    except Exception as e:
+        print(f"Error processing the log file: {e}")
+
+# Input: Log file path
+filename = input("Enter the log file path: ")
+log_analysis(filename)
+
+Enter the log file path:  C:\Users\dutta\Downloads\python_mfas\Zookeeper.log
+Most Frequent IP Addresses:
+2015-07-29: 45199 times
+2015-07-30: 6329 times
+2015-07-31: 3461 times
+2015-08-25: 2328 times
+2015-08-20: 2179 times
+
+Most Frequent Response Codes:
+request: 10442 times
+leaving: 10390 times
+for: 10388 times
+waiting: 10386 times
+connection: 3928 times
+
+Most Accessed URLs:
+Connection: 12249 times
+Received: 10429 times
+Send: 10390 times
+Interrupted: 10386 times
+Cannot: 2584 times
