@@ -1,0 +1,15 @@
+# Task 30: Bubble Sort
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):  # Loop for each pass
+        for j in range(0, n - i - 1):  # Traverse the unsorted part
+            if arr[j] > arr[j + 1]:  # Swap if elements are in the wrong order
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr
+
+# Input from the user
+arr = list(map(int, input("Enter the list of integers separated by spaces: ").split()))
+print("Sorted list:", bubble_sort(arr))
+
+Enter the list of integers separated by spaces:  5 2 9 1 5 6
+Sorted list: [1, 2, 5, 5, 6, 9]
