@@ -1,0 +1,12 @@
+# Task 29: Check Pythagorean Triplet
+def is_pythagorean_triplet(a, b, c):
+    # Ensure c is the largest number
+    a, b, c = sorted([a, b, c])
+    return a**2 + b**2 == c**2  # Check the Pythagorean condition
+
+# Input from the user
+a, b, c = map(int, input("Enter three integers separated by spaces: ").split())
+print("Pythagorean Triplet" if is_pythagorean_triplet(a, b, c) else "Not a Pythagorean Triplet")
+
+Enter three integers separated by spaces:  3 4 5
+Pythagorean Triplet
