@@ -1,0 +1,21 @@
+# Task 26: Check Balanced Parentheses
+def is_balanced_parentheses(s):
+    stack = []  # Use a stack to keep track of opening brackets
+    pairs = {')': '(', '}': '{', ']': '['}  # Map for matching closing to opening brackets
+
+    for char in s:
+        if char in "({[":  # If it's an opening bracket, push to stack
+            stack.append(char)
+        elif char in ")}]":  # If it's a closing bracket
+            if not stack or stack[-1] != pairs[char]:  # Check if it matches the top of the stack
+                return False
+            stack.pop()  # Pop the matched opening bracket
+
+    return len(stack) == 0  # Return True if stack is empty (all brackets matched)
+
+# Input from the user
+string = input("Enter a string of parentheses: ")
+print("Balanced" if is_balanced_parentheses(string) else "Not Balanced")
+
+Enter a string of parentheses:  {[()]}
+Balanced
