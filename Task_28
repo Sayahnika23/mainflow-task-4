@@ -1,0 +1,11 @@
+# Task 28: Count words in a sentence
+def count_words(sentence):
+    words = sentence.split()  # Split the sentence into words
+    return len(words)  # Count the number of words
+
+# Input from the user
+sentence = input("Enter a sentence: ")
+print("The number of words is:", count_words(sentence))
+
+Enter a sentence:  She sells seashells on the seashore
+The number of words is: 6
